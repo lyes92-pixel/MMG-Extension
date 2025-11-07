@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "MMG WhatsApp Sender",
+  "description": "إرسال رسائل واتساب تلقائيًا من Google Sheet",
+  "version": "2.1",
+  "permissions": ["tabs", "scripting", "activeTab", "storage"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "MMG WhatsApp Sender"
+  },
+  "host_permissions": [
+    "https://web.whatsapp.com/*",
+    "https://sheets.googleapis.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://web.whatsapp.com/*"],
+      "js": ["contentScript.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
